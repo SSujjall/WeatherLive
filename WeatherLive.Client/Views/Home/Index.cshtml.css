@@ -1,0 +1,41 @@
+﻿main {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+}
+
+.app {
+    flex: 1;
+}
+
+.weather-container {
+    width: 90%; /* Default: Full width on small screens */
+    padding: 3rem;
+}
+
+@media (min-width: 768px) { /* Medium screens (e.g., tablets) */
+    .weather-container {
+        width: 75%;
+    }
+}
+
+@media (min-width: 1400px) { /* Large screens (e.g., desktops) */
+    .weather-container {
+        width: 50%;
+    }
+}
+
+.cube {
+    background-color: rgba(255, 255, 255, 0.1);
+    color: white;
+    text-align: center;
+    font-size: 18px;
+    height: 150px; /* Fixed height */
+    width: 100%; /* Full width inside grid */
+    border-radius: 10px;
+    padding: 10px;
+}
+
+.material-icons {
+    font-size: 40px;
+}

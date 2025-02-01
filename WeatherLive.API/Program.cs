@@ -18,8 +18,7 @@ var app = builder.Build();
 
 
 
-
-// minimal api to get country code from country name using ISO3166 package
+#region minimal api to get country code from country name using ISO3166 package
 app.MapGet("/get-numeric-code-for-testing", async (string countryName, GeolocationHelperService _service) =>
 {
     var numericCode = _service.GetNumericCode(countryName);
@@ -32,34 +31,39 @@ app.MapGet("/get-numeric-code-for-testing", async (string countryName, Geolocati
         }
     });
 });
+#endregion
 
-// minimal api to get geolocation(lat, long) using country name
+#region minimal api to get geolocation(lat, long) using country name
 app.MapGet("/get-geo-for-testing", async (string countryName, string cityName, WeatherService _service) =>
 {
     var geoLocation = await _service.GetGeoLocationCordinates(countryName, cityName);
     return Results.Ok(geoLocation);
 });
+#endregion
 
-// minimal api to get all coountry names.
+#region minimal api to get all coountry names.
 app.MapGet("/get-all-countries", async (WeatherService _service) =>
 {
     var countryNames = _service.CountryNames(); 
     return Results.Ok(countryNames);
 });
+#endregion
 
-// minimal api to get weather using lat long
+#region minimal api to get weather using lat long
 app.MapGet("/get-weather-lat-long", async (string countryName, string cityName, WeatherService _service) =>
 {
     var result = await _service.GetWeatherByLatLong(countryName, cityName);
     return Results.Ok(result);
 });
+#endregion
 
-// minimal api to get weather directly from name
+#region minimal api to get weather directly from name
 app.MapGet("/get-weather-main", async (string name, WeatherService _service) =>
 {
     var result = await _service.GetWeatherByName(name);
     return Results.Ok(result);
 });
+#endregion
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())

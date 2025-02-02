@@ -1,7 +1,13 @@
+using WeatherLive.Client.Models;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
+
+var WeatherConfig = builder.Configuration.GetSection("WebApi").Get<WeatherConfig>();
+builder.Services.AddSingleton<WeatherConfig>();
+
 
 var app = builder.Build();
 
